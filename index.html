@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Job-Tracker-App</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- Font-awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <header class="w-11/12 mx-auto">
+      <h2 class="text-3xl font-bold py-6">Job Application Tracker</h2>
+      <div class="grid grid-cols-3 gap-6">
+        <div class="bg-base-100 p-4 rounded-lg shadow-sm">
+          <p class="text-gray-500">Total</p>
+          <h2 id="total" class="text-3xl font-bold">0</h2>
+        </div>
+        <div class="bg-base-100 p-4 rounded-lg shadow-sm">
+          <p class="text-gray-500">Interviews</p>
+          <h2 id="interviewCounter" class="text-3xl font-bold text-green-400">
+            0
+          </h2>
+        </div>
+        <div class="bg-base-100 p-4 rounded-lg shadow-sm">
+          <p class="text-gray-500">Rejected</p>
+          <h2 id="rejectedCounter" class="text-3xl font-bold text-red-400">
+            0
+          </h2>
+        </div>
+      </div>
+    </header>
+    <hr class="my-5" />
+    <main class="w-11/12 mx-auto">
+      <h2 class="text-2xl font-bold mb-4">Available Jobs</h2>
+      <div class="flex justify-between items-center">
+        <div class="mb-6">
+          <button
+            onclick="toggleStyle('all-filter-btn')"
+            id="all-filter-btn"
+            class="bg-black text-white px-5 py-2"
+          >
+            All
+          </button>
+
+          <button
+            onclick="toggleStyle('interview-filter-btn')"
+            id="interview-filter-btn"
+            class="bg-gray-300 px-5 py-2"
+          >
+            Interview
+          </button>
+
+          <button
+            onclick="toggleStyle('rejected-filter-btn')"
+            id="rejected-filter-btn"
+            class="bg-gray-300 px-5 py-2"
+          >
+            Rejected
+          </button>
+        </div>
+        <div
+          id="count-status"
+          class="countstatus text-xl font-normal text-gray-500"
+        ></div>
+      </div>
+      <!-- Filtered card -->
+      <section id="filtered-section" class="hidden"></section>
+
+      <section id="allCards" class="space-y-6">
+        <div class="card flex justify-between border p-8">
+          <div class="space-y-6">
+            <div class="card-top">
+              <h2 class="company-name text-xl font-bold pb-2">
+                WebFlow Agency
+              </h2>
+              <span class="job-designation">Web Designer & Developer</span>
+              <p class="job-info pt-4">
+                Los Angeles, CA • Part-time • $80,000 - $120,000
+              </p>
+            </div>
+            <div class="card-middle space-y-2">
+              <button class="status bg-teal-100 border-2 rounded p-1">
+                Not Applied
+              </button>
+              <p class="job-description">
+                Create stunning web experiences for high-profile clients. Must
+                have portfolio and experience with modern web design trends.
+              </p>
+            </div>
+            <div class="card-bottom space-x-3">
+              <button class="interview-btn bg-green-300 border-2 rounded p-1">
+                Interview
+              </button>
+              <button class="rejected-btn bg-red-300 border-2 rounded p-1">
+                Rejected
+              </button>
+            </div>
+          </div>
+          <div>
+            <button class="btn-delete bg-red-200 text-red-600 px-4 py-2">
+              Delete
+            </button>
+          </div>
+        </div>
+
+        <div class="card flex justify-between border p-8">
+          <div class="space-y-6">
+            <div class="card-top">
+              <h2 class="company-name text-xl font-bold pb-2">Cloude Agency</h2>
+              <span class="job-designation">Web Programmer & Developer</span>
+              <p class="job-info pt-4">
+                Los Angeles, CA • Part-time • $80,000 - $120,000
+              </p>
+            </div>
+            <div class="card-middle space-y-2">
+              <button class="status bg-teal-100 border-2 rounded p-1">
+                Not Applied
+              </button>
+              <p class="job-description">
+                Create stunning web experiences for high-profile clients. Must
+                have portfolio and experience with modern web design trends.
+              </p>
+            </div>
+            <div class="card-bottom space-x-3">
+              <button class="interview-btn bg-green-300 border-2 rounded p-1">
+                Interview
+              </button>
+              <button class="rejected-btn bg-red-300 border-2 rounded p-1">
+                Rejected
+              </button>
+            </div>
+          </div>
+          <div>
+            <button class="btn-delete bg-red-200 text-red-600 px-4 py-2">
+              Delete
+            </button>
+          </div>
+        </div>
+
+        <div class="card flex justify-between border p-8">
+          <div class="space-y-6">
+            <div class="card-top">
+              <h2 class="company-name text-xl font-bold pb-2">
+                TechVision Solutions
+              </h2>
+              <span class="job-designation">Frontend Engineer (React)</span>
+              <p class="job-info pt-4">
+                San Francisco, CA • Remote • $110,000 - $140,000
+              </p>
+            </div>
+            <div class="card-middle space-y-2">
+              <button class="status bg-teal-100 border-2 rounded p-1">
+                Not Applied
+              </button>
+              <p class="job-description">
+                Work on building scalable UI components and optimizing
+                performance for our SaaS dashboard.
+              </p>
+            </div>
+            <div class="card-bottom space-x-3">
+              <button class="interview-btn bg-green-300 border-2 rounded p-1">
+                Interview
+              </button>
+              <button class="rejected-btn bg-red-300 border-2 rounded p-1">
+                Rejected
+              </button>
+            </div>
+          </div>
+          <div>
+            <button class="btn-delete bg-red-200 text-red-600 px-4 py-2">
+              Delete
+            </button>
+          </div>
+        </div>
+
+        <div class="card flex justify-between border p-8">
+          <div class="space-y-6">
+            <div class="card-top">
+              <h2 class="company-name text-xl font-bold pb-2">
+                Creative Pulse
+              </h2>
+              <span class="job-designation">UI/UX Designer</span>
+              <p class="job-info pt-4">
+                Austin, TX • Full-time • $90,000 - $115,000
+              </p>
+            </div>
+            <div class="card-middle space-y-2">
+              <button class="status bg-teal-100 border-2 rounded p-1">
+                Not Applied
+              </button>
+              <p class="job-description">
+                Design user-centric interfaces and conduct user research for
+                mobile applications.
+              </p>
+            </div>
+            <div class="card-bottom space-x-3">
+              <button class="interview-btn bg-green-300 border-2 rounded p-1">
+                Interview
+              </button>
+              <button class="rejected-btn bg-red-300 border-2 rounded p-1">
+                Rejected
+              </button>
+            </div>
+          </div>
+          <div>
+            <button class="btn-delete bg-red-200 text-red-600 px-4 py-2">
+              Delete
+            </button>
+          </div>
+        </div>
+
+        <div class="card flex justify-between border p-8">
+          <div class="space-y-6">
+            <div class="card-top">
+              <h2 class="company-name text-xl font-bold pb-2">DataStream AI</h2>
+              <span class="job-designation">Backend Developer (Node.js)</span>
+              <p class="job-info pt-4">
+                New York, NY • Hybrid • $120,000 - $160,000
+              </p>
+            </div>
+            <div class="card-middle space-y-2">
+              <button class="status bg-teal-100 border-2 rounded p-1">
+                Not Applied
+              </button>
+              <p class="job-description">
+                Develop robust APIs and manage database architecture using
+                PostgreSQL and MongoDB.
+              </p>
+            </div>
+            <div class="card-bottom space-x-3">
+              <button class="interview-btn bg-green-300 border-2 rounded p-1">
+                Interview
+              </button>
+              <button class="rejected-btn bg-red-300 border-2 rounded p-1">
+                Rejected
+              </button>
+            </div>
+          </div>
+          <div>
+            <button class="btn-delete bg-red-200 text-red-600 px-4 py-2">
+              Delete
+            </button>
+          </div>
+        </div>
+
+        <div class="card flex justify-between border p-8">
+          <div class="space-y-6">
+            <div class="card-top">
+              <h2 class="company-name text-xl font-bold pb-2">
+                Blue Horizon Labs
+              </h2>
+              <span class="job-designation">Full Stack Developer</span>
+              <p class="job-info pt-4">
+                Seattle, WA • Full-time • $105,000 - $135,000
+              </p>
+            </div>
+            <div class="card-middle space-y-2">
+              <button class="status bg-teal-100 border-2 rounded p-1">
+                Not Applied
+              </button>
+              <p class="job-description">
+                Building end-to-end features for our cloud infrastructure
+                monitoring tool.
+              </p>
+            </div>
+            <div class="card-bottom space-x-3">
+              <button class="interview-btn bg-green-300 border-2 rounded p-1">
+                Interview
+              </button>
+              <button class="rejected-btn bg-red-300 border-2 rounded p-1">
+                Rejected
+              </button>
+            </div>
+          </div>
+          <div>
+            <button class="btn-delete bg-red-200 text-red-600 px-4 py-2">
+              Delete
+            </button>
+          </div>
+        </div>
+
+        <div class="card flex justify-between border p-8">
+          <div class="space-y-6">
+            <div class="card-top">
+              <h2 class="company-name text-xl font-bold pb-2">
+                GreenGrowth Tech
+              </h2>
+              <span class="job-designation">QA Engineer</span>
+              <p class="job-info pt-4">
+                Chicago, IL • Contract • $70,000 - $90,000
+              </p>
+            </div>
+            <div class="card-middle space-y-2">
+              <button class="status bg-teal-100 border-2 rounded p-1">
+                Not Applied
+              </button>
+              <p class="job-description">
+                Execute manual and automated tests to ensure software quality
+                and reliability.
+              </p>
+            </div>
+            <div class="card-bottom space-x-3">
+              <button class="interview-btn bg-green-300 border-2 rounded p-1">
+                Interview
+              </button>
+              <button class="rejected-btn bg-red-300 border-2 rounded p-1">
+                Rejected
+              </button>
+            </div>
+          </div>
+          <div>
+            <button class="btn-delete bg-red-200 text-red-600 px-4 py-2">
+              Delete
+            </button>
+          </div>
+        </div>
+
+        <div class="card flex justify-between border p-8">
+          <div class="space-y-6">
+            <div class="card-top">
+              <h2 class="company-name text-xl font-bold pb-2">Cyber Guard</h2>
+              <span class="job-designation">Security Specialist</span>
+              <p class="job-info pt-4">
+                Washington, D.C. • Full-time • $130,000 - $170,000
+              </p>
+            </div>
+            <div class="card-middle space-y-2">
+              <button class="status bg-teal-100 border-2 rounded p-1">
+                Not Applied
+              </button>
+              <p class="job-description">
+                Implementing security protocols and protecting our network from
+                potential threats.
+              </p>
+            </div>
+            <div class="card-bottom space-x-3">
+              <button class="interview-btn bg-green-300 border-2 rounded p-1">
+                Interview
+              </button>
+              <button class="rejected-btn bg-red-300 border-2 rounded p-1">
+                Rejected
+              </button>
+            </div>
+          </div>
+          <div>
+            <button class="btn-delete bg-red-200 text-red-600 px-4 py-2">
+              Delete
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- <script src="script.js"></script> -->
+    <script src="script.js"></script>
+  </body>
+</html>
