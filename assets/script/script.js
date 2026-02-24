@@ -2,6 +2,7 @@ let interviewList = [];
 let rejectedList = [];
 let currentStatus = 'all-filter-btn';
 
+// DOM Elements
 let countStatusDisplay = document.getElementById('count-status');
 
 let total = document.getElementById('total');
@@ -16,6 +17,7 @@ const allCardSection = document.getElementById('allCards');
 const mainContainer = document.querySelector('main');
 const filterSection = document.getElementById('filtered-section');
 
+// Function created for count
 function calculateCounts() {
 
   const totalJobs = allCardSection.children.length;
@@ -24,6 +26,7 @@ function calculateCounts() {
   interviewCounter.innerText = interviewList.length;
   rejectedCounter.innerText = rejectedList.length;
 
+  // Count text added dynamically
   if (currentStatus === 'all-filter-btn') {
     countStatusDisplay.innerText = `${totalJobs} Jobs`;
   } else if (currentStatus === 'interview-filter-btn') {
@@ -66,9 +69,9 @@ function toggleStyle(id) {
 
   currentStatus = id;
   calculateCounts();
-
 }
 
+//event delegation for interview, rejected and delete buttons
 mainContainer.addEventListener('click', function (event) {
   if (event.target.classList.contains('interview-btn') || event.target.classList.contains('rejected-btn')) {
     const parentNode = event.target.closest('.card');
@@ -128,7 +131,7 @@ mainContainer.addEventListener('click', function (event) {
 
 function renderList(list) {
   filterSection.innerHTML = '';
-
+// default blank card when no data found in interview or rejected list
   if (list.length === 0) {
     let blankCard = document.createElement('div');
     blankCard.className = "card flex justify-center items-center border p-8";
