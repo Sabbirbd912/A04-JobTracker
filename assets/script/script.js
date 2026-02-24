@@ -134,7 +134,7 @@ function renderList(list) {
     blankCard.className = "card flex justify-center items-center border p-8";
     blankCard.innerHTML = `
       <div class="text-center space-y-2">
-        <img src="Assests/Others/jobs.png" alt="No applications" class="mx-auto mb-4 w-24">
+        <img src="assets/others/jobs.png" alt="No applications" class="mx-auto mb-4 w-24">
         <p class="text-gray-500 font-medium">No applications found in this category.</p>
         <span class="text-gray-400 text-sm">Comming Soon New Opportunities</span>
       </div>
