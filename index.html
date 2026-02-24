@@ -16,20 +16,20 @@
     />
   </head>
   <body class="bg-[#F8FAFC]">
-    <header class="w-11/12 mx-auto sticky top-0 bg-white z-10">
+    <header class="w-11/12 mx-auto">
       <h2 class="text-3xl font-bold py-8">Job Application Tracker</h2>
-      <div class="grid grid-cols-3 gap-6">
-        <div class="bg-base-100 p-4 rounded-lg shadow-sm">
+      <div class="grid grid-cols-1  md:grid-cols-3 gap-6">
+        <div class="bg-white p-4 rounded-lg shadow-sm">
           <p class="text-gray-500">Total</p>
           <h2 id="total" class="text-3xl font-bold">0</h2>
         </div>
-        <div class="bg-base-100 p-4 rounded-lg shadow-sm">
+        <div class="bg-white p-4 rounded-lg shadow-sm">
           <p class="text-gray-500">Interviews</p>
           <h2 id="interviewCounter" class="text-3xl font-bold text-green-400">
             0
           </h2>
         </div>
-        <div class="bg-base-100 p-4 rounded-lg shadow-sm">
+        <div class="bg-white p-4 rounded-lg shadow-sm">
           <p class="text-gray-500">Rejected</p>
           <h2 id="rejectedCounter" class="text-3xl font-bold text-red-400">
             0
@@ -41,7 +41,7 @@
 
     <main class="w-11/12 mx-auto pt-5">
       <h2 class="text-2xl font-bold text-green-900 mb-4">Available Jobs</h2>
-      <div class="flex justify-between items-center">
+      <div class="flex justify-between items-center sticky top-0 bg-[#F8FAFC] z-10">
         <div class="mb-6">
           <button
             onclick="toggleStyle('all-filter-btn')"
