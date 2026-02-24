@@ -25,11 +25,11 @@ function calculateCounts() {
   rejectedCounter.innerText = rejectedList.length;
 
   if (currentStatus === 'all-filter-btn') {
-    countStatusDisplay.innerText = `${totalJobs} jobs`;
+    countStatusDisplay.innerText = `${totalJobs} Jobs`;
   } else if (currentStatus === 'interview-filter-btn') {
-    countStatusDisplay.innerText = `${interviewList.length} of ${totalJobs} jobs`;
+    countStatusDisplay.innerText = `${interviewList.length} of ${totalJobs} Jobs`;
   } else if (currentStatus === 'rejected-filter-btn') {
-    countStatusDisplay.innerText = `${rejectedList.length} of ${totalJobs} jobs`;
+    countStatusDisplay.innerText = `${rejectedList.length} of ${totalJobs} Jobs`;
   }
 }
 
