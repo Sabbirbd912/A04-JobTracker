@@ -15,7 +15,7 @@
       referrerpolicy="no-referrer"
     />
   </head>
-  <body>
+  <body class="bg-[#F8FAFC]">
     <header class="w-11/12 mx-auto sticky top-0 bg-white z-10">
       <h2 class="text-3xl font-bold py-8">Job Application Tracker</h2>
       <div class="grid grid-cols-3 gap-6">
@@ -39,14 +39,14 @@
       <div class="w-full mx-auto border-b-2 border-gray-400 py-4"></div>
     </header>
 
-    <main class="w-11/12 mx-auto pt-4">
-      <h2 class="text-2xl font-bold mb-4">Available Jobs</h2>
+    <main class="w-11/12 mx-auto pt-5">
+      <h2 class="text-2xl font-bold text-green-900 mb-4">Available Jobs</h2>
       <div class="flex justify-between items-center">
         <div class="mb-6">
           <button
             onclick="toggleStyle('all-filter-btn')"
             id="all-filter-btn"
-            class="bg-black text-white px-5 py-2"
+            class="bg-black text-white px-5 py-2 rounded hover:bg-blue-600 active:bg-blue-300 active:scale-95 transition"
           >
             All
           </button>
@@ -54,7 +54,7 @@
           <button
             onclick="toggleStyle('interview-filter-btn')"
             id="interview-filter-btn"
-            class="bg-gray-300 px-5 py-2"
+            class="bg-gray-300 px-5 py-2 rounded hover:bg-green-400 active:bg-green-200 active:scale-95 transition"
           >
             Interview
           </button>
@@ -62,52 +62,52 @@
           <button
             onclick="toggleStyle('rejected-filter-btn')"
             id="rejected-filter-btn"
-            class="bg-gray-300 px-5 py-2"
+            class="bg-gray-300 px-5 py-2 rounded hover:bg-red-400 active:bg-red-200 active:scale-95 transition"
           >
             Rejected
           </button>
         </div>
         <div
           id="count-status"
-          class="countstatus text-xl font-normal text-gray-500"
+          class="countstatus text-base font-extralight text-gray-500"
         ></div>
       </div>
       <!-- Filtered card -->
       <section id="filtered-section" class="hidden"></section>
 
       <section id="allCards" class="space-y-6">
-        <div class="card flex justify-between border p-8">
+        <div class="card flex justify-between bg-white shadow-lg rounded-md p-8">
           <div class="space-y-6">
             <div class="card-top">
               <h2 class="company-name text-xl font-bold pb-2">
                 WebFlow Agency
               </h2>
-              <span class="job-designation">Web Designer & Developer</span>
-              <p class="job-info pt-4">
+              <span class="job-designation text-gray-500">Web Designer & Developer</span>
+              <p class="job-info pt-4 text-gray-400">
                 Los Angeles, CA • Part-time • $80,000 - $120,000
               </p>
             </div>
             <div class="card-middle space-y-2">
-              <button class="status bg-teal-100 border-2 rounded p-1">
+              <button class="status bg-blue-100 border-2 rounded px-2 text-gray-700">
                 Not Applied
               </button>
-              <p class="job-description">
+              <p class="job-description text-gray-500">
                 Create stunning web experiences for high-profile clients. Must
                 have portfolio and experience with modern web design trends.
               </p>
             </div>
             <div class="card-bottom space-x-3">
-              <button class="interview-btn bg-green-300 border-2 rounded p-1">
+              <button class="interview-btn border-1 p-[6px] border-green-500 text-green-600 font-bold rounded active:bg-green-300 active:scale-95 transition">
                 Interview
               </button>
-              <button class="rejected-btn bg-red-300 border-2 rounded p-1">
+              <button class="rejected-btn border-1 p-[6px] border-red-400 text-red-600 font-bold rounded active:bg-red-300 active:scale-95 transition">
                 Rejected
               </button>
             </div>
           </div>
           <div>
-            <button class="btn-delete bg-red-200 text-red-600 px-4 py-2">
-              Delete
+            <button class="btn-delete text-red-600 px-4 py-2 active:bg-red-200 active:scale-95 transition">
+              <i class="fa-regular fa-trash-can"></i>
             </button>
           </div>
         </div>
