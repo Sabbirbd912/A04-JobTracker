@@ -129,7 +129,7 @@ mainContainer.addEventListener('click', function (event) {
 function renderList(list) {
   filterSection.innerHTML = '';
 
-  if(list.length === 0) {
+  if (list.length === 0) {
     let blankCard = document.createElement('div');
     blankCard.className = "card flex justify-center items-center border p-8";
     blankCard.innerHTML = `
@@ -145,28 +145,51 @@ function renderList(list) {
 
   list.forEach(item => {
     let div = document.createElement('div');
-    div.className = "card flex justify-between border p-8";
+    div.className = "card flex justify-between bg-white shadow-lg rounded-md p-8 mb-6";
     div.innerHTML = `
       <div class="space-y-6">
-        <div>
-          <h2 class="company-name text-xl font-bold pb-2">${item.companyName}</h2>
-          <span class="job-designation">${item.jobDegination}</span>
-          <p class="job-info pt-4">${item.jobInfo}</p>
-        </div>
-        <div class="space-y-2">
-            <button class="status bg-teal-100 border-2 rounded p-1">${item.actionStatus}</button>
-            <p class="job-description">${item.jobDescription}</p>
-        </div>
-        <div class="space-x-3">
-            <button class="interview-btn bg-green-300 border-2 rounded p-1">Interview</button>
-            <button class="rejected-btn bg-red-300 border-2 rounded p-1">Rejected</button>
-        </div>
-      </div>
-      <div>
-        <button class="btn-delete bg-red-200 text-red-600 px-4 py-2">
-          Delete
-        </button>
-      </div>
+            <div class="card-top">
+              <h2 class="company-name text-xl font-bold pb-2">
+                ${item.companyName}
+              </h2>
+              <span class="job-designation text-gray-500"
+                >${item.jobDegination}</span
+              >
+              <p class="job-info pt-4 text-gray-400">
+                ${item.jobInfo}
+              </p>
+            </div>
+            <div class="card-middle space-y-2">
+              <button
+                class="status bg-sky-100 border-2 rounded px-2 text-gray-700"
+              >
+                ${item.actionStatus}
+              </button>
+              <p class="job-description text-gray-500">
+                ${item.jobDescription}  
+                have portfolio and experience with modern web design trends.
+              </p>
+            </div>
+            <div class="card-bottom space-x-3">
+              <button
+                class="interview-btn border-1 p-[6px] border-green-500 text-green-600 font-bold rounded active:bg-green-300 active:scale-95 transition"
+              >
+                Interview
+              </button>
+              <button
+                class="rejected-btn border-1 p-[6px] border-red-400 text-red-600 font-bold rounded active:bg-red-300 active:scale-95 transition"
+              >
+                Rejected
+              </button>
+            </div>
+          </div>
+          <div>
+            <button
+              class="btn-delete text-red-600 px-4 py-2 active:bg-red-200 active:scale-95 transition"
+            >
+              <i class="fa-regular fa-trash-can"></i>
+            </button>
+          </div>
     `;
     filterSection.appendChild(div);
   });
